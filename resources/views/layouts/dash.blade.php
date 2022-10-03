@@ -4229,6 +4229,9 @@ License: For each use you must have a valid license purchased only from above li
 		<script src="/assets/js/custom/utilities/modals/upgrade-plan.js"></script>
 		<script src="/assets/js/custom/utilities/modals/users-search.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+		<!-- include summernote css/js -->
+		<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+    	<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 		@yield('script')
 		<!--end::Page Custom Javascript-->
 		<!--end::Javascript-->

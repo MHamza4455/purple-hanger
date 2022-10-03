@@ -36,9 +36,9 @@
                         </span>
                         </td>
                       <td>
-                          <a href="{{url('/catOne/delete')}}/{{$data->id}}" onclick="return confirm('Are you Sure')"><button class="btn btn-danger">Delete</button></a>
-                          <a href="{{url('/catOne/edit')}}/{{$data->id}}"><button class="btn btn-secondary">Edit</button></a>
-                          <a href="{{url('/catOne/details')}}/{{$data->id}}"><button class="btn btn-primary">Details</button></a>
+                          <a href="{{ route('CatOnedelete',$data->id) }}" onclick="return confirm('Are you Sure')"><button class="btn btn-danger">Delete</button></a>
+                          <a href="{{ route('CatOneEdit',$data->id) }}"><button class="btn btn-secondary">Edit</button></a>
+                          <a href=""><button class="btn btn-primary">Details</button></a>
                       </td>
                   </tr> 
                   @endforeach

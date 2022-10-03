@@ -59,7 +59,7 @@
             <div class="row">
                 <div class="col">
                     <div class="site-logo">
-                        <a href="{{route('indexHome')}}"><img src="img/logo.png" alt="Logo"></a>
+                        <a href="{{route('indexHome')}}"><img src="/img/logo.png" alt="Logo"></a>
                     </div>
                 </div>
                 <div class="col header-contact-serarch-column d-none d-lg-block">
@@ -134,10 +134,16 @@
                                         <li>
                                             <a href="#"><i class="icon-user"></i></a>
                                             <ul>
-                                                <li><a href="login.html">Sign in</a></li>
-                                                <li><a href="register.html">Register</a></li>
+                                                @if (\Auth::user()->hasPermission('manage-logout'))
+                                                <li><a href="">LogOut</a></li>
                                                 <li><a href="account.html">My Account</a></li>
                                                 <li><a href="wishlist.html">Wishlist</a></li>
+                                                @else
+                                                    <li><a href="{{route('FrontendLogin')}}">Sign in</a></li>
+                                                    <li><a href="register.html">Register</a></li>
+                                                    <li><a href="account.html">My Account</a></li>
+                                                    <li><a href="wishlist.html">Wishlist</a></li>
+                                                @endif
                                             </ul>
                                         </li>
                                     </ul>
@@ -169,7 +175,7 @@
                 <div class="col header-menu-column justify-content-center">
                     <div class="sticky-logo">
                         <div class="site-logo">
-                            <a href="index.html"><img src="img/logo-3.png" alt="Logo"></a>
+                            <a href="{{route('indexHome')}}"><img src="/img/logo-3.png" alt="Logo"></a>
                         </div>
                     </div>
                     <div class="header-menu header-menu-2">
@@ -227,10 +233,9 @@
                                                     <li><a href="shop-right-sidebar.html">Shop right sidebar</a></li>
                                                     <li><a href="shop-grid.html">Shop Grid</a></li>
                                                     <li><a href="product-details.html">Shop details </a></li>
-                                                    <li><a href="{{route('cart')}}">Cart</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="shop.html"><img src="img/banner/menu-banner-1.png" alt="#"></a>
+                                            <li><a href="shop.html"><img src="/img/banner/menu-banner-1.png" alt="#"></a>
                                             </li>
                                         </ul>
                                     </li>

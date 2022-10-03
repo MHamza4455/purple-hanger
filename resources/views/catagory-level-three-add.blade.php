@@ -19,7 +19,7 @@
             <br>
           </center>
 
-          <form action="{{url('/')}}/CatThreeAdd"  method="post">
+          <form action="{{route('catThreeStore')}}"  method="post">
             @csrf
             <input class="form-control" type="text" placeholder="Enter Name" name="name"><br>
             <input class="form-control" id="des" type="text" placeholder="Description" name="description"><br>

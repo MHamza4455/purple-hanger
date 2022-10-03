@@ -12,7 +12,7 @@
   <div class="card">
       <div class="card-body">
           <center><h4 class="card-title" style="color: blue">Level 1 Registration</h4></center>
-          <form action="{{url('/')}}/CatOneAdd"  method="post">
+          <form action="{{route('CatOneStore')}}"  method="post">
             @csrf
             
               <label for="">Catogery Name</label>

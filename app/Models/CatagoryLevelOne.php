@@ -23,4 +23,5 @@ class CatagoryLevelOne extends Model
         return $this->hasMany('App\Models\Product', 'id', 'catagory_level_one_id');
 
     }
+    
 }

@@ -7,6 +7,7 @@ use App\Models\CatagoryLevelOne;
 use App\Models\CatagoryLevelTwo;
 use App\Models\CatagoryLevelThree;
 use App\Models\Product;
+use App\Models\Banner;
 class CatogeryController extends Controller
 {
     public function dashboard()
@@ -59,7 +60,7 @@ class CatogeryController extends Controller
         $firstCatogery->name = $request['name'];
         $firstCatogery->description = $request['description'];
         $firstCatogery->save();
-        return redirect('CatOneList')->with('message', 'Data Updated Successfully.');
+        return redirect('admin/CatOneList')->with('message', 'Data Updated Successfully.');
     }
 //Catagory Level 2
     public function CatTwoList()
@@ -109,7 +110,7 @@ class CatogeryController extends Controller
         $secondCatogery->name = $request['name'];
         $secondCatogery->description = $request['description'];
         $secondCatogery->save();
-        return redirect('CatTwoList')->with('message', 'Data Updated Successfully.');
+        return redirect('admin/CatTwoList')->with('message', 'Data Updated Successfully.');
     }
 //Catagory Level 3
     public function CatThreeList()
@@ -170,7 +171,7 @@ class CatogeryController extends Controller
         $thirdCatogery->name = $request['name'];
         $thirdCatogery->description = $request['description'];
         $thirdCatogery->save();
-        return redirect('CatThreeList')->with('message', 'Data Updated Successfully.');
+        return redirect('admin/CatThreeList')->with('message', 'Data Updated Successfully.');
     }
 //Product
      public function productList()
@@ -230,6 +231,14 @@ class CatogeryController extends Controller
         {
             $products->status = false;
         }
+        if($request['is_featured'])
+        {
+            $products->is_featured = true;
+        }
+        else
+        {
+            $products->is_featured = false;
+        }
         $products->catagory_level_one_id = $request['catagory_level_one_id'];
         $products->catagory_level_two_id = $request['catagory_level_two_id'];
         $products->catagory_level_three_id = $request['catagory_level_three_id'];
@@ -281,8 +290,57 @@ class CatogeryController extends Controller
         $products->price = $request['price'];
         $products->offer_price = $request['offer_price'];
         $products->save();
-        return redirect('productList')->with('message', 'Data Updated Successfully.');
+        return response()->json(
+            [
+                'success' => true,
+                'message' => 'Data inserted successfully'
+            ]
+        );
 
+    }
+
+//Banner
+    public function bannerAdd()
+    {
+        $products = Product::all();
+        $data = compact('products');
+        return view('banner')->with($data);
+    }
+    public function bannerStore(Request $request){
+        $request->validate(
+            [
+                'name' => 'required|max:255',
+                'description' => 'required',
+                'file'=> 'required',
+                'type'=> 'required',
+                
+            ]
+        );
+        $bannner = new Banner();
+        $file = $request->file('file');
+        $file->move(public_path()."/BannerImages/", $file->getClientOriginalName());
+        $bannner->name = $request->post('name');
+        $bannner->description = $request->post('description');
+        $bannner->type = $request->post('type');
+        $bannner->external_url ="/BannerImages/".$file->getClientOriginalName();
+        if($bannner->status =="on"){
+            $bannner->status = true;
+        } 
+        else{
+            $bannner->status = false;
+        }
+        $bannner->product_id = $request->post('product_id');
+        $bannner->save();
+        return response()->json([
+            'success'=> true,
+            'message' => "Data Inserted Successfully"
+        ]);
+    }
+    public function bannerList()
+    {
+        $banners = Banner::all();
+        $data = compact('banners');
+        return view('banner-list')->with($data);
     }
 
 }

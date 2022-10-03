@@ -18,7 +18,7 @@
             <h1 style="color: blue">Level Two Catogery</h1>
           <br>
         </center>
-        <form action="{{url('/')}}/CatTwoAdd"  method="post">
+        <form action="{{route('CatTwoStore')}}"  method="post">
           @csrf
           <input class="form-control" type="text" placeholder="Enter Name" name="name"><br>
           <input class="form-control" type="text" placeholder="Description" name="description"><br>

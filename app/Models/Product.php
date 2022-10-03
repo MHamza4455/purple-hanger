@@ -23,4 +23,8 @@ class Product extends Model
         return $this->belongsTo('App\Models\CatagoryLevelThree', 'catagory_level_three_id', 'id');
 
     }
+    public function banner(){
+        return $this->hasMany('App\Models\Banner', 'id', 'product_id');
+
+    }
 }

@@ -9,7 +9,7 @@
                     <h1 class="page-title">Checkout</h1>
                     <div class="ltn__breadcrumb-list">
                         <ul>
-                            <li><a href="index.html"><span class="ltn__secondary-color"><i class="fas fa-home"></i></span> Home</a></li>
+                            <li><a href="{{route('indexHome')}}"><span class="ltn__secondary-color"><i class="fas fa-home"></i></span> Home</a></li>
                             <li>Checkout</li>
                         </ul>
                     </div>
@@ -26,31 +26,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="ltn__checkout-inner">
-                    <div class="ltn__checkout-single-content ltn__returning-customer-wrap">
-                        <h5>Returning customer? <a class="ltn__secondary-color" href="#ltn__returning-customer-login" data-bs-toggle="collapse">Click here to login</a></h5>
-                        <div id="ltn__returning-customer-login" class="collapse ltn__checkout-single-content-info">
-                            <div class="ltn_coupon-code-form ltn__form-box">
-                                <p>Please login your accont.</p>
-                                <form action="#" >
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="input-item input-item-name ltn__custom-icon">
-                                                <input type="text" name="ltn__name" placeholder="Enter your name">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="input-item input-item-email ltn__custom-icon">
-                                                <input type="email" name="ltn__email" placeholder="Enter email address">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button class="btn theme-btn-1 btn-effect-1 text-uppercase">Login</button>
-                                    <label class="input-info-save mb-0"><input type="checkbox" name="agree"> Remember me</label>
-                                    <p class="mt-30"><a href="register.html">Lost your password?</a></p>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+                    
                     <div class="ltn__checkout-single-content ltn__coupon-code-wrap">
                         <h5>Have a coupon? <a class="ltn__secondary-color" href="#ltn__coupon-code" data-bs-toggle="collapse">Click here to enter your code</a></h5>
                         <div id="ltn__coupon-code" class="collapse ltn__checkout-single-content-info">
@@ -190,11 +166,11 @@
                         <!-- card -->
                         <div class="card">
                             <h5 class="collapsed ltn__card-title" data-bs-toggle="collapse" data-bs-target="#faq-item-2-3" aria-expanded="false" >
-                                PayPal <img src="img/icons/payment-3.png" alt="#">
+                                JazzCash <img src="img/icons/payment-3.png" alt="#">
                             </h5>
                             <div id="faq-item-2-3" class="collapse" data-bs-parent="#checkout_accordion_1">
                                 <div class="card-body">
-                                    <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.</p>
+                                    <p>Pay via JazzCash; you can pay with your credit card if you don’t have a JazzCash account.</p>
                                 </div>
                             </div>
                         </div>

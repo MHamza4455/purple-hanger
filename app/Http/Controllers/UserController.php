@@ -32,7 +32,7 @@ class UserController extends Controller
                 'file' => ['required','mimes:png,jpg,jpeg','max:2048'],
             ]
         );
-       
+        $str = $request['select01'];
         $file = $request->file('file');
         $file->move(public_path()."/ProfileImages/", $file->getClientOriginalName());
        $user = User::create
@@ -42,8 +42,9 @@ class UserController extends Controller
         'password'=> Hash::make($request->password),
         'filename'=> $file->getClientOriginalName(),
         'path'=> "/ProfileImages/".$file->getClientOriginalName(),
+        'role'=>$str,
         ]);
-        $str = $request['select01'];
+       
         if($str == 'admin'){
             echo "hello admin";
             $permissions = Permission::all();
@@ -51,7 +52,9 @@ class UserController extends Controller
         }
         else if($str == 'customer')
         {
-            $permissions=null;
+           
+            $permissions = Permission::where('slug','manage-logout')->get();
+            echo $permissions;
         }
         else{
             $permissions = Permission::whereIn('slug',$request->permission)->get();

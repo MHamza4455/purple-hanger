@@ -5,7 +5,7 @@
     <div class="card">
         <div class="card-body">
             <center><h4 style="color: blue">Update Catogery 1</h4></center>
-            <form action="{{url('/catOne/update')}}/{{$firstCatogery->id}}"  method="post">
+            <form action="{{ route('catOneupdate',$firstCatogery->id) }}" method="post">
                 @csrf
                 <label for="">Name</label>
                 <input type="name" class="form-control" name="name"   placeholder="Enter Name" value="{{$firstCatogery->name}}">

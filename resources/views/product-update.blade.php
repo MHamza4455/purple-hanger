@@ -3,7 +3,7 @@
 <div class="container">
     <div class="card ">
         <div class="card-body">
-            <form action="{{url('/product/update')}}/{{$products->id}}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('productupdate',$products->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <input class="form-control" type="text" placeholder="Enter Product Name." name="name" value="{{$products->name}}"><br>
                 <span class="text-danger">

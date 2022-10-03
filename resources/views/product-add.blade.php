@@ -92,11 +92,24 @@
               <option >Select Catogery 3</option>
             
             </select><br><br>
-              <label class="switch">
-                  <input type="checkbox" name="status" data-on="Active" data-off="InActive">
-                  <span class="slider round"></span>
-              </label><br><br> 
-              <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="row">
+              <div class="col" >
+                <label for="formFile" class="form-label">Status</label><br>
+                <label class="switch">
+                    <input type="checkbox" name="status" data-on="Active" data-off="InActive">
+                    <span class="slider round"></span>
+                </label><br><br> 
+              </div>
+              <div class="col" >
+                <label for="formFile" class="form-label">Featured</label><br>
+                <label class="switch">
+                    <input type="checkbox" name="is_featured" data-on="Active" data-off="InActive">
+                    <span class="slider round"></span>
+                </label><br><br> 
+              </div>
+              
+            </div>   
+            <button type="submit" class="btn btn-primary">Submit</button>
           </form>
       </div>
   </div>

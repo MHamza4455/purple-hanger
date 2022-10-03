@@ -23,6 +23,7 @@
                         <th style="font-weight: bold;">SecondCat</th>
                         <th style="font-weight: bold;">ThirdCat</th>
                         <th style="font-weight: bold;">Status</th>
+                        <th style="font-weight: bold;">Featured</th>
                         <th style="font-weight: bold;">Image</th>
                         <th style="font-weight: bold;">Change Status</th>
                         <th style="font-weight: bold;">Action</th>
@@ -45,6 +46,17 @@
                             Active
                             @elseif ($data->status==0)
                             InActive
+                            @else
+                            Other 
+                            @endif
+                        </span>
+                        </td>
+                        <td>
+                            <span class="badge bg-danger">
+                            @if ($data->is_featured == 1)
+                            Featured
+                            @elseif ($data->is_featured==0)
+                            Not Featured
                             @else
                             Other 
                             @endif
@@ -86,8 +98,8 @@
                         
                         </td>
                         <td>
-                            <a href="{{url('/product/delete')}}/{{$data->id}}" onclick="return confirm('Are you Sure')"><button class="btn btn-danger">Delete</button></a>
-                            <a href="{{url('/product/edit')}}/{{$data->id}}"><button class="btn btn-secondary">Edit</button></a>
+                            <a href="{{ route('productDelete',$data->id) }}" onclick="return confirm('Are you Sure')"><button class="btn btn-danger">Delete</button></a>
+                            <a href="{{ route('productEdit',$data->id) }}"><button class="btn btn-secondary">Edit</button></a>
                         </td>
                     </tr> 
                     @endforeach

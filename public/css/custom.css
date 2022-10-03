@@ -1,0 +1,11 @@
+.product-img{
+    width: 270px;
+    height:270px;
+    object-fit: cover;    
+}
+
+.prd-image{
+    width: 270px;
+    height:270px;
+    object-fit: cover;    
+}
