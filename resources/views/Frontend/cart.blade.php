@@ -1,6 +1,8 @@
 @extends('FrontendLayouts.master')
 @section('content')
-    
+@if (Cookie::get('user') !== null)   
+    <h1>Cart Empty User Login</h1>
+@else
     <div class="liton__shoping-cart-area mb-120">
         <div class="container">
             <div class="row">
@@ -25,7 +27,7 @@
                                                         <h4 class="nomargin">{{ $details['name'] }}</h4>
                                                     </div>
                                                 </td>
-                                               
+                                            
                                                 <td data-th="Quantity">
                                                     <input type="number" value="{{ $details['quantity'] }}" class="form-control quantity update-cart" />
                                                 </td>
@@ -82,7 +84,7 @@
             </div>
         </div>
     </div>
-
+@endif
 @endsection
    
 @section('script')

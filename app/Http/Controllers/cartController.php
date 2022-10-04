@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product; 
+use Cookie;
 class cartController extends Controller
 {
     public function cart()
@@ -12,24 +13,24 @@ class cartController extends Controller
     }
     public function addToCart($id)
     {
-        //dd("fehfehfe");
-        $product = Product::findOrFail($id);
+       
+            $product = Product::findOrFail($id);
            
-        $cart = session()->get('cart', []);
-   
-        if(isset($cart[$id])) {
-            $cart[$id]['quantity']++;
-        } else {
-            $cart[$id] = [
-                "name" => $product->name,
-                "quantity" => 1,
-                "price" => $product->offer_price,
-                "image" => $product->thumbnail
-            ];
-        }
-         //dd($cart);  
-        session()->put('cart', $cart);
-        return redirect()->back()->with('success', 'Product added to cart successfully!');
+            $cart = session()->get('cart', []);
+       
+            if(isset($cart[$id])) {
+                $cart[$id]['quantity']++;
+            } else {
+                $cart[$id] = [
+                    "name" => $product->name,
+                    "quantity" => 1,
+                    "price" => $product->offer_price,
+                    "image" => $product->thumbnail
+                ];
+            } 
+            session()->put('cart', $cart);
+            return redirect()->back()->with('success', 'Product added to cart successfully!');
+       
     }
    
     public function update(Request $request)

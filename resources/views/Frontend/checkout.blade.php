@@ -42,7 +42,7 @@
                     <div class="ltn__checkout-single-content mt-50">
                         <h4 class="title-2">Billing Details</h4>
                         <div class="ltn__checkout-single-content-info">
-                            <form action="#" >
+                            <form action="{{route('storeOrder')}}" method="get">
                                 <h6>Personal Information</h6>
                                 <div class="row">
                                     <div class="col-md-6">
@@ -97,12 +97,37 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="input-item">
-                                                    <input type="text" placeholder="House number and street name">
+                                                    <input type="text" name="address" placeholder="House number and street name">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="input-item">
                                                     <input type="text" placeholder="Apartment, suite, unit etc. (optional)">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12">
+                                        <h6>Methods</h6>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="input-item">
+                                                    <select class="nice-select" name="ship_method">
+                                                        <option>Select Shipment Method</option>
+                                                        <option  value="UPS">UPS</option>
+                                                        <option  value="Hermes">Hermes</option>
+                                                        <option  value="DHL">DHL</option>
+                                                    </select>                                               
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="input-item">
+                                                    <select class="nice-select" name="payment_method">
+                                                        <option>Select Payment Method</option>
+                                                        <option  value="Cash On Delivery">Cash On Delivery</option>
+                                                        <option  value="JassCash">JassCash</option>
+                                                        <option  value="Bank">Bank</option>
+                                                    </select>      
                                                 </div>
                                             </div>
                                         </div>
@@ -132,7 +157,7 @@
                                     <textarea name="ltn__message" placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
                                 </div>
 
-                            </form>
+                            
                         </div>
                     </div>
                 </div>
@@ -182,7 +207,7 @@
                 </div>
             </div>
             <div class="col-lg-6">
-                <form action="{{route('storeOrder')}}" method="get">
+               
                     <div class="shoping-cart-total mt-50">
                         <h4 class="title-2">Cart Totals</h4>
                         <table class="table">

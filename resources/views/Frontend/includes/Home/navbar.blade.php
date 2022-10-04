@@ -166,10 +166,16 @@
                             <li>
                                 <a href="#"><i class="icon-user"></i></a>
                                 <ul>
-                                    <li><a href="{{route('FrontendLogin')}}">Sign in</a></li>
-                                    <li><a href="register.html">Register</a></li>
-                                    <li><a href="account.html">My Account</a></li>
-                                    <li><a href="wishlist.html">Wishlist</a></li>
+                                    @if (Cookie::get('user') !== null)
+                                        <li><a href="{{route('deleteUserCookie')}}">Logout</a></li>
+                                        <li><a href="account.html">My Account</a></li>
+                                        <li><a href="wishlist.html">Wishlist</a></li>
+                                    @else
+                                        <li><a href="{{route('FrontendLogin')}}">Sign in</a></li>
+                                        <li><a href="register.html">Register</a></li>
+                                        <li><a href="account.html">My Account</a></li>
+                                        <li><a href="wishlist.html">Wishlist</a></li>
+                                    @endif
                                 </ul>
                             </li>
                         </ul>

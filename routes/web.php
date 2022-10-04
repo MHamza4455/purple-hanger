@@ -33,8 +33,10 @@ use App\Http\Controllers\Auth\AuthController;
     Route::get('/checkOut', [IndexController::class, 'checkOut'])->name('checkOut');
     Route::get('/productDetails/{id}', [IndexController::class, 'productDetails'])->name('productDetails');
     Route::get('/modalView/{id}', [IndexController::class, 'modalView'])->name('modalView');
+    //login
     Route::get('/FrontendLogin', [IndexController::class, 'FrontendLogin'])->name('FrontendLogin');
     Route::get('/Check/Frontend/user', [IndexController::class, 'checkFrontendUser'])->name('checkFrontendUser');
+    Route::get('/deleteUserCookie' , [IndexController::class, 'deleteUserCookie'])->name('deleteUserCookie');
     //cart
     Route::get('cart', [cartController::class, 'cart'])->name('cart');
     Route::get('add-to-cart/{id}', [cartController::class, 'addToCart'])->name('add.to.cart');
@@ -67,6 +69,9 @@ Route::group(['prefix'=>'admin'],function(){
     //Mail Settings
     Route::get('/contactus', [MailController::class, 'contactus'])->name('contactus');
     Route::post('/contactusdata', [MailController::class, 'contactData'])->name('contactusdata');
+    //orders
+    Route::get('/orderList', [OrderController::class, 'orderList'])->name('orderList');
+
     //Manage Admin Users
     Route::group(['middleware' => ['user-permission:manage-user']], function () {
         //Manage Users

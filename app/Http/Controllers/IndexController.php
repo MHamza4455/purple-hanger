@@ -8,6 +8,7 @@ use App\Models\Blog;
 use App\Models\User;
 use App\Models\Permission;
 use DB;
+use Cookie;
 class IndexController extends Controller
 {
     public function index()
@@ -90,7 +91,14 @@ class IndexController extends Controller
     }
     public function checkOut()
     {
-        return view('Frontend.checkout');
+        if (Cookie::get('user') !== null){
+            return view('Frontend.checkout');
+        }
+        else
+        {
+            return redirect('/FrontendLogin')->with('message', 'Logged in to Proceed Your Order.');
+        }
+        
     }
     public function productDetails($id)
     {
@@ -133,10 +141,12 @@ class IndexController extends Controller
            if($role == "customer"){
                 if(\Auth::guard('customers')->attempt(['email' => $request['email'], 'password' => $request['password']])){
                     $customerData = (['email' => $request['email'], 'password' => $request['password']]);
-                    $data = compact('customerData');
-                    $permissions = Permission::where('slug','manage-logout')->get();
-                    $user->userPermissions()->attach($permissions);
-                    return redirect('/')->with('message', 'Logged in Successfully.')->with($data);
+                    //dd($customerData);
+                    $user_id = $customerData;
+                    $UserList = implode(', ', $user_id);
+                    //dd($UserList);
+                    Cookie::queue(Cookie::make('user', $UserList, 360));
+                    return redirect('/')->with('message', 'Logged in Successfully.');
                 };
            }
            else{
@@ -147,7 +157,12 @@ class IndexController extends Controller
         {
            return redirect()->back()->with('message', 'PLEASE TRY AGAIN WITH VALID EMAIL & PASSWORD.');
         }
-        
         // attempt to login and then redirect to home 
+    }
+    public function deleteUserCookie()
+    {
+        Cookie::queue(Cookie::forget('user'));
+        
+        return redirect()->back();
     }
 }
