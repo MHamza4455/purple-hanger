@@ -6,6 +6,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\blogController;
+use App\Http\Controllers\cartController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\Auth\AuthController;
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +28,6 @@ use App\Http\Controllers\Auth\AuthController;
     Route::get('/blog', [IndexController::class, 'blog'])->name('blog');
     Route::get('/blogGrid', [IndexController::class, 'blogGrid'])->name('blogGrid');
     Route::get('/blogDetails', [IndexController::class, 'blogDetails'])->name('blogDetails');
-    Route::get('/cart/{id}', [IndexController::class, 'cart'])->name('cart');
     Route::get('/contact', [IndexController::class, 'contact'])->name('contact');
     Route::get('/servicesDetails', [IndexController::class, 'servicesDetails'])->name('servicesDetails');
     Route::get('/checkOut', [IndexController::class, 'checkOut'])->name('checkOut');
@@ -34,6 +35,14 @@ use App\Http\Controllers\Auth\AuthController;
     Route::get('/modalView/{id}', [IndexController::class, 'modalView'])->name('modalView');
     Route::get('/FrontendLogin', [IndexController::class, 'FrontendLogin'])->name('FrontendLogin');
     Route::get('/Check/Frontend/user', [IndexController::class, 'checkFrontendUser'])->name('checkFrontendUser');
+    //cart
+    Route::get('cart', [cartController::class, 'cart'])->name('cart');
+    Route::get('add-to-cart/{id}', [cartController::class, 'addToCart'])->name('add.to.cart');
+    Route::patch('update-cart', [cartController::class, 'update'])->name('update.cart');
+    Route::delete('remove-from-cart', [cartController::class, 'remove'])->name('remove.from.cart');
+    //Order
+    Route::get('/storeOrder', [OrderController::class, 'storeOrder'])->name('storeOrder');
+
 //Admin Routes
 
 
@@ -117,6 +126,7 @@ Route::group(['prefix'=>'admin'],function(){
         Route::get('/bannerAdd' ,[CatogeryController::class, 'bannerAdd'])->name('bannerAdd');
         Route::post('/bannerStore', [CatogeryController::class, 'bannerStore'])->name('bannerStore');
         Route::get('/bannerList', [CatogeryController::class, 'bannerList'])->name('bannerList');
+        Route::get('/map', [CatogeryController::class, 'map'])->name('map');
     });
 
     Route::group(['prefix' => 'banners','as' => 'banners.','middleware' => ['user-permission:manage-banners']], function () {

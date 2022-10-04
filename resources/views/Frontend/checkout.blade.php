@@ -178,41 +178,45 @@
                     <div class="ltn__payment-note mt-30 mb-30">
                         <p>Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our privacy policy.</p>
                     </div>
-                    <button class="btn theme-btn-1 btn-effect-1 text-uppercase" type="submit">Place order</button>
+                    <a href="{{route('storeOrder')}}" class="theme-btn-1 btn btn-effect-1">Place Order</a>
                 </div>
             </div>
             <div class="col-lg-6">
-                <div class="shoping-cart-total mt-50">
-                    <h4 class="title-2">Cart Totals</h4>
-                    <table class="table">
-                        <tbody>
-                            <tr>
-                                <td>Digital Stethoscope <strong>× 2</strong></td>
-                                <td>$298.00</td>
-                            </tr>
-                            <tr>
-                                <td>Cosmetic Containers <strong>× 2</strong></td>
-                                <td>$170.00</td>
-                            </tr>
-                            <tr>
-                                <td>Antiseptic Spray <strong>× 2</strong></td>
-                                <td>$150.00</td>
-                            </tr>
-                            <tr>
-                                <td>Shipping and Handing</td>
-                                <td>$15.00</td>
-                            </tr>
-                            <tr>
-                                <td>Vat</td>
-                                <td>$00.00</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Order Total</strong></td>
-                                <td><strong>$633.00</strong></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <form action="{{route('storeOrder')}}" method="get">
+                    <div class="shoping-cart-total mt-50">
+                        <h4 class="title-2">Cart Totals</h4>
+                        <table class="table">
+                            <tbody>
+                                @php $total = 0 @endphp
+                                @if(session('cart'))
+                                    @foreach(session('cart') as $id => $details)
+                                        @php $total += $details['price'] * $details['quantity'] @endphp
+                                    
+                                <tr data-id="{{ $id }}">
+                                    <td>
+                                        {{ $details['name'] }}<strong> × {{ $details['quantity'] }}</strong>
+                                        <input type="hidden" name="name[]" value="{{ $details['name'] }}">
+                                        <input type="hidden" name="quantity[]" value="{{ $details['quantity'] }}">
+                                        <input type="hidden" name="product_id[]" value="{{ $id}}">
+                                    </td>
+                                    <td>{{ $details['price'] }}</td>
+                                    <input type="hidden" name="price[]" value="{{ $details['price'] }}">
+                                </tr>
+                                @endforeach
+                                @endif
+                                <tr>
+                                    <td><strong>Order Total</strong></td>
+                                    <td><strong>${{$total}}</strong></td>
+                                    <input type="hidden" name="total[]" value="{{ $total }}">
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                        <p>Your personal data will be used to process your order.</p>
+
+                        <button class="btn theme-btn-1 btn-effect-1 text-uppercase" type="submit">Place order</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

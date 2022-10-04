@@ -9,6 +9,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     @include('Frontend.Scripts.css-scripts')
+    @yield('css')
 </head>
 <body>
 <!-- Body main wrapper start -->
@@ -38,7 +39,7 @@
     <!-- preloader area end -->
 
    @include('Frontend.Scripts.js-scripts')
-  
+   @yield('script')
 </body>
 </html>
 

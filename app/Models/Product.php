@@ -27,4 +27,8 @@ class Product extends Model
         return $this->hasMany('App\Models\Banner', 'id', 'product_id');
 
     }
+    public function order()
+    {
+        return $this->hasMany('App\Models\order', 'id', 'product_id');
+    }
 }

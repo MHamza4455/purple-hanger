@@ -11,17 +11,17 @@ class CatagoryLevelOne extends Model
     protected $table = "catagory_level_ones";
     protected $primaryKey = "id";
 
-    public function secondcat(){
+    public function secondcat()
+    {
         return $this->hasMany('App\Models\CatagoryLevelTwo', 'id', 'catagory_level_one_id');
-
     }
-    public function thirdcat(){
+    public function thirdcat()
+    {
         return $this->hasMany('App\Models\CatagoryLevelThree', 'id', 'catagory_level_one_id');
-
     }
-    public function product(){
+    public function product()
+    {
         return $this->hasMany('App\Models\Product', 'id', 'catagory_level_one_id');
-
     }
     
 }

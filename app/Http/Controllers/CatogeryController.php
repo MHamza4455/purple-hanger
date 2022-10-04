@@ -298,6 +298,10 @@ class CatogeryController extends Controller
         );
 
     }
+    public function map()
+    {
+        return  view('map');
+    }
 
 //Banner
     public function bannerAdd()

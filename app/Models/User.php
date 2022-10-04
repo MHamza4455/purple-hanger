@@ -47,7 +47,12 @@ class User extends Authenticatable
         return $this->belongsToMany(Permission::class, 'user_permissions', 'user_id', 'permission_id');
     }
 
-    public function hasPermission($permission){
+    public function hasPermission($permission)
+    {
         return (bool) $this->userPermissions->where('slug',$permission)->count();
+    }
+    public function order()
+    {
+        return $this->hasMany('App\Models\order', 'id', 'user_id');
     }
 }

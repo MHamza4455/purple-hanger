@@ -167,7 +167,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="{{route('cart', $data->id)}}" title="Add to Cart" data-bs-toggle="modal" data-bs-target="#add_to_cart_modal_{{$data->id}}">
+                                            <a href="{{ route('add.to.cart', $data->id) }}" title="Add to Cart" data-bs-toggle="modal" data-bs-target="#add_to_cart_modal_{{$data->id}}">
                                                 <i class="fas fa-shopping-cart"></i>
                                             </a>
                                         </li>
@@ -269,7 +269,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{route('cart', $data->id)}}" title="Add to Cart" data-bs-toggle="modal" data-bs-target="#add_to_cart_modal_{{$data->id}}">
+                                    <a href="{{ route('add.to.cart', $data->id) }}" title="Add to Cart" data-bs-toggle="modal" data-bs-target="#add_to_cart_modal_{{$data->id}}">
                                         <i class="fas fa-shopping-cart"></i>
                                     </a>
                                 </li>

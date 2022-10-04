@@ -18,10 +18,9 @@
                                     </div>
                                      <div class="modal-product-info">
                                         <h5><a href="product-details.html"></a>{{$data->name}}</h5>
-                                        <p class="added-cart"><i class="fa fa-check-circle"></i>  Successfully added to your Cart</p>
+                                        <p class="added-cart"><i class="fa fa-check-circle"></i>  Press Add To Cart to Confirm.</p>
                                         <div class="btn-wrapper">
-                                            <a href="{{route('cart', $data->id)}}" class="theme-btn-1 btn btn-effect-1">View Cart</a>
-                                            <a href="checkout.html" class="theme-btn-2 btn btn-effect-2">Checkout</a>
+                                            <a href="{{ route('add.to.cart', $data->id) }}" class="theme-btn-1 btn btn-effect-1">Add To Cart</a>
                                         </div>
                                      </div>
                                      <!-- additional-info -->

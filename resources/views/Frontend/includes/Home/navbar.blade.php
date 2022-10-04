@@ -166,16 +166,10 @@
                             <li>
                                 <a href="#"><i class="icon-user"></i></a>
                                 <ul>
-                                    @if (\Auth::user()->hasPermission('manage-logout'))
-                                        <li><a href="">LogOut</a></li>
-                                        <li><a href="account.html">My Account</a></li>
-                                        <li><a href="wishlist.html">Wishlist</a></li>
-                                    @else
-                                        <li><a href="{{route('FrontendLogin')}}">Sign in</a></li>
-                                        <li><a href="register.html">Register</a></li>
-                                        <li><a href="account.html">My Account</a></li>
-                                        <li><a href="wishlist.html">Wishlist</a></li>
-                                    @endif
+                                    <li><a href="{{route('FrontendLogin')}}">Sign in</a></li>
+                                    <li><a href="register.html">Register</a></li>
+                                    <li><a href="account.html">My Account</a></li>
+                                    <li><a href="wishlist.html">Wishlist</a></li>
                                 </ul>
                             </li>
                         </ul>
