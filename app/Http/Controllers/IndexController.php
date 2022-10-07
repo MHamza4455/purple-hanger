@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Permission;
 use DB;
 use Cookie;
+use Session;
 class IndexController extends Controller
 {
     public function index()
@@ -49,38 +50,6 @@ class IndexController extends Controller
     {
         return view('Frontend.blog-detail');
     }
-    public function cart($id)
-    {
-        $products =  Product::find($id);
-
-        if(\Cookie::has('cart_items') && \Cookie::get('cart_items') != null){
-            $cart_items = \Cookie::get('cart_items');
-
-            dd($cart_items);
-        }else{
-            $cart_items = [
-                [
-                    'product_id' => $products->id,
-                    'quantity' => 1,
-                ]
-                ];
-        }
-
-        \Cookie::queue(\Cookie::make(json_encode($cart_items)));
-
-        // $data = compact('products');
-        // return view('Frontend.cart')->with($data);
-
-    }
-
-    public function addToCart($id)
-    {
-        $products =  Product::find($id);
-    
-        \Cookie::get('cart_items');
-
-    }
-
     public function contact()
     {
         return view('Frontend.contact');
@@ -146,23 +115,24 @@ class IndexController extends Controller
                     $UserList = implode(', ', $user_id);
                     //dd($UserList);
                     Cookie::queue(Cookie::make('user', $UserList, 360));
-                    return redirect('/')->with('message', 'Logged in Successfully.');
+                    return redirect()->route('cartSessionItems');
                 };
            }
            else{
             echo "false";
+            return redirect()->back()->with('messageLoginFailed', 'PLEASE TRY AGAIN WITH VALID EMAIL & PASSWORD.');
            }
         }
         else
         {
-           return redirect()->back()->with('message', 'PLEASE TRY AGAIN WITH VALID EMAIL & PASSWORD.');
+           return redirect()->back()->with('messageLoginFailed', 'PLEASE TRY AGAIN WITH VALID EMAIL & PASSWORD.');
         }
         // attempt to login and then redirect to home 
     }
     public function deleteUserCookie()
     {
         Cookie::queue(Cookie::forget('user'));
-        
-        return redirect()->back();
+        Session::flush();
+        return redirect('/');
     }
 }

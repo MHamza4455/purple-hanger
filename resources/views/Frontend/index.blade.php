@@ -1609,3 +1609,31 @@
 <!-- MODAL AREA END -->
 
 @endsection
+@section('script')
+<script>
+    @if (session('message'))
+    swal({
+    title: "Oops!",
+    text: "This Product Already Exist in Your Cart!",
+    icon: "info",
+    button: "OK!",
+    });
+    @endif
+    @if (session('meessageAddtoCart'))
+    swal({
+    title: "ADDED!",
+    text: "Your Product Added To Cart Successfully!",
+    icon: "success",
+    button: "OK!",
+    });
+    @endif
+    @if (session('messageLoginSuccessfully'))
+    swal({
+    title: "Successfully!",
+    text: "Logged in Successfully.",
+    timer: 3500
+    });
+    @endif
+</script>  
+
+@endsection

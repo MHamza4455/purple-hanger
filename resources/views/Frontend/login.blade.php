@@ -1,12 +1,5 @@
 @extends('FrontendLayouts.master')
 @section('content')
-<br><br>
-@if(session()->has('message'))
-<div class="alert alert-success">
-   <center> {{ session()->get('message') }}</center>
-</div>
-@endif
-
 <!-- LOGIN AREA START -->
 <br><br><br><br>
 <div class="ltn__login-area pb-65">
@@ -49,4 +42,15 @@
     </div>
 </div>
 <!-- LOGIN AREA END -->
+@endsection
+@section('script')
+<script>
+    @if (session('messageLoginFailed'))
+    swal({
+    title: "Login Failed!",
+    text: "PLEASE TRY AGAIN WITH VALID EMAIL & PASSWORD!",
+    timer: 5000
+    });
+    @endif
+</script>
 @endsection

@@ -29,6 +29,10 @@ class Product extends Model
     }
     public function order()
     {
-        return $this->hasMany('App\Models\order', 'id', 'product_id');
+        return $this->hasMany('App\Models\Order', 'id', 'product_id');
+    }
+    public function cart()
+    {
+        return $this->hasMany('App\Models\cart', 'id', 'product_id');
     }
 }

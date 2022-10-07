@@ -42,6 +42,9 @@ use App\Http\Controllers\Auth\AuthController;
     Route::get('add-to-cart/{id}', [cartController::class, 'addToCart'])->name('add.to.cart');
     Route::patch('update-cart', [cartController::class, 'update'])->name('update.cart');
     Route::delete('remove-from-cart', [cartController::class, 'remove'])->name('remove.from.cart');
+    Route::get('/cartSessionItems', [cartController::class, 'cartSessionItems'])->name('cartSessionItems');
+    Route::delete('/removeFromCartAjax',[cartController::class, 'removeFromCartAjax'])->name('removeFromCartAjax');
+    Route::post('/UpdateCartItemAjax',[cartController::class, 'UpdateCartItemAjax'])->name('UpdateCartItemAjax');
     //Order
     Route::get('/storeOrder', [OrderController::class, 'storeOrder'])->name('storeOrder');
 
